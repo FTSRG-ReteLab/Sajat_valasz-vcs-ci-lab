@@ -10,7 +10,7 @@ public class TrainControllerImpl implements TrainController {
 	private int referenceSpeed = 0;
 	private int speedLimit = 0;
 
-	Table<Long, Integer, Integer> tachograph = HashBasedTable.create();
+	private Table<Long, Integer, Integer> tachograph = HashBasedTable.create();
 
 	@Override
 	public void followSpeed() {
@@ -32,6 +32,11 @@ public class TrainControllerImpl implements TrainController {
 	@Override
 	public int getReferenceSpeed() {
 		return referenceSpeed;
+	}
+
+	@Override
+	public Table<Long, Integer, Integer> getTachograph() {
+		return tachograph;
 	}
 
 	@Override
