@@ -55,4 +55,4 @@ Our team name is *Sajat_valasz* and the members are
 * Pál Kurgyis and
 * Dániel Vankó.
 
-*__Budapest__, February 11th, 2019.*
+*__Budapest__, February 18th, 2019.*
