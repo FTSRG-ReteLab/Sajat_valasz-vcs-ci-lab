@@ -50,5 +50,19 @@ public class TrainSystemTest {
 		Assert.assertEquals(0, controller.getReferenceSpeed());
 	}
 
+	@Test
+	public void IsThereSomethingInTheTachograph() {
+		sensor.overrideSpeedLimit(10);
+		user.overrideJoystickPosition(5);
+		
+		Assert.assertTrue(controller.getTachograph().isEmpty());
+
+		controller.followSpeed();
+		controller.followSpeed();
+		controller.followSpeed();
+		
+		Assert.assertFalse(controller.getTachograph().isEmpty());
+	}
+
 	
 }

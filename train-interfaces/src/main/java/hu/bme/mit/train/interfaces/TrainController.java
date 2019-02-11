@@ -8,7 +8,7 @@ public interface TrainController {
 
 	int getReferenceSpeed();
 
-	public Table<Long, Integer, Integer> getTachograph();
+	Table<Long, Integer, Integer> getTachograph();
 
 	void setSpeedLimit(int speedLimit);
 
