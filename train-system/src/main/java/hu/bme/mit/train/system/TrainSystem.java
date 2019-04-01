@@ -6,12 +6,15 @@ import hu.bme.mit.train.interfaces.TrainSensor;
 import hu.bme.mit.train.interfaces.TrainUser;
 import hu.bme.mit.train.sensor.TrainSensorImpl;
 import hu.bme.mit.train.user.TrainUserImpl;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TrainSystem {
 
 	private TrainController controller = new TrainControllerImpl();
 	private TrainUser user = new TrainUserImpl(controller);
 	private TrainSensor sensor = new TrainSensorImpl(controller, user);
+	private Timer timer = new Timer();
 
 	public TrainController getController() {
 		return controller;
@@ -23,6 +26,15 @@ public class TrainSystem {
 
 	public TrainUser getUser() {
 		return user;
+	}
+	
+	public void startSystem() {
+		timer.scheduleAtFixedRate(new TimerTask() {
+ 			@Override
+  			public void run() {
+			    getController().followSpeed();
+			  }
+			}, 3*1000, 3*1000);
 	}
 
 }
