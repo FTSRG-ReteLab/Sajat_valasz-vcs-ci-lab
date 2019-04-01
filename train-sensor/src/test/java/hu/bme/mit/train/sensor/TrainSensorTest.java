@@ -5,13 +5,13 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 
-import hu.bme.mit.train.interfaces.TrainSensor;
+import hu.bme.mit.train.interfaces.*;
 import hu.bme.mit.train.sensor.TrainSensorImpl;
 
 public class TrainSensorTest {
 
-    TrainController controller;
-    TrainUser user;
+    TrainController mockC;
+    TrainUser mockU;
     TrainSensor sensor;
 
     @Before
@@ -25,32 +25,32 @@ public class TrainSensorTest {
 
     @Test
     public void overrideSpeedLimit_underAbsoluteMargin_setAlarmStateTrue() {
-        overrideSpeedLimit(-5);
+        sensor.overrideSpeedLimit(-5);
          
         verify(mockU, times(1)).setAlarmState(true);
     }
     
     @Test
     public void overrideSpeedLimit_overAbsoluteMargin_setAlarmStateTrue() {
-        overrideSpeedLimit(562);
+        sensor.overrideSpeedLimit(562);
          
         verify(mockU, times(1)).setAlarmState(true);
     }
     
     @Test
     public void overrideSpeedLimit_relativeMargin_setAlarmStateTrue() {
-        overrideSpeedLimit(42);
+        sensor.overrideSpeedLimit(42);
          
         verify(mockU, times(1)).setAlarmState(true);
     }
     
     @Test
     public void overrideSpeedLimit_backToDefaultAlarmState_speedLimitBetweenMargins() {
-        overrideSpeedLimit(573);
+        sensor.overrideSpeedLimit(573);
         
         verify(mockU, times(1)).setAlarmState(true);
         
-        overrideSpeedLimit(120);
+        sensor.overrideSpeedLimit(120);
          
         verify(mockU, times(1)).setAlarmState(false);
     }
