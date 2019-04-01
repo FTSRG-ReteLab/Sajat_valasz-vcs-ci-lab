@@ -32,7 +32,7 @@ public class TrainSystem {
 		timer.scheduleAtFixedRate(new TimerTask() {
  			@Override
   			public void run() {
-			    getController.followSpeed();
+			    getController().followSpeed();
 			  }
 			}, 5*1000, 5*1000);
 	}
