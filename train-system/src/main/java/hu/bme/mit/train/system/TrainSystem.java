@@ -34,7 +34,7 @@ public class TrainSystem {
   			public void run() {
 			    getController().followSpeed();
 			  }
-			}, 3*1000, 3*1000);
+			}, 3*(long)1000, 3*(long)1000);
 	}
 
 }
